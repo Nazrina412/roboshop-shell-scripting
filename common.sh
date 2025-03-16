@@ -1,4 +1,4 @@
-&LOG_File_File_File=/tmp/roboshop.&LOG_File_File
+LOG_File_File_File=/tmp/roboshop.&LOG_File_File
 
 Nodejs() {
   echo Disable Nodejs Default version
