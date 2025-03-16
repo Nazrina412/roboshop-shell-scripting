@@ -17,7 +17,7 @@ Nodejs() {
  cp mongo.repo /etc/yum.repos.d/mongo.repo >&LOG_File
 
  echo install Nodejs >&LOG_File
- Nodejs
+
 
  echo add user
  useradd roboshop >&LOG_File
