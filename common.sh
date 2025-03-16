@@ -1,5 +1,5 @@
 LOG_File=/tmp/roboshop.log
-rm -f &LOG_File
+rm -f $LOG_File
 
 PRINT() {
  echo &>>LOG_File
