@@ -42,7 +42,7 @@ curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/{compo
 STAT $?
 
 PRINT extract content
-cd ${app_path} &>>LOG_File
+cd ${app_path}
 unzip /tmp/${component}.zip  &>>$LOG_File
 STAT $?
 }
