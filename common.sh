@@ -46,7 +46,7 @@ Nodejs() {
 
   PRINT add user
   id roboshop &>>LOG_File
-  if [ $? -ne 0]; then
+  if [ $? -ne 0 ]; then
      useradd roboshop &>>LOG_File
   fi
   STAT $?
