@@ -135,6 +135,6 @@ Schema() {
   PRINT Create App users
   mysql -h localhost -uroot -pRoboShop@1 < /app/db/master-data.sql
   STAT $?
-  fi
+
 
 }
