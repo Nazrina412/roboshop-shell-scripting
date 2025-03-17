@@ -45,7 +45,10 @@ Nodejs() {
 
 
   PRINT add user
-  useradd roboshop &>>LOG_File
+  id roboshop &>>LOG_File
+  if [ $? -ne 0]; then
+     useradd roboshop &>>LOG_File
+  fi
   STAT $?
 
   PRINT cleaning old content
