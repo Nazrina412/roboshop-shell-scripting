@@ -57,8 +57,11 @@ Nodejs() {
 
   cd /app &>>LOG_File
 
- PRINT starting the service
+ PRINT install dependencies
  npm install &>>LOG_File
+ echo $?
+
+ PRINT starting the service
  systemctl daemon-reload &>>LOG_File
  systemctl enable ${component} &>>LOG_File
  systemctl start ${component} &>>LOG_File
