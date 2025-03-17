@@ -1,4 +1,4 @@
 source common.sh
 component=user
 Nodejs
-####update
+app_path= /app
