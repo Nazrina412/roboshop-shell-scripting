@@ -31,7 +31,7 @@ mkdir ${app_path} &>>LOG_File
 STAT $?
 
 PRINT download app
-curl -o /tmp/{component}.zip https://roboshop-artifacts.s3.amazonaws.com/{component}-v3.zip
+curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/{component}-v3.zip
 STAT $?
 
 PRINT extract content
