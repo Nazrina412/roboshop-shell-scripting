@@ -1,4 +1,4 @@
 source common.sh
 component=cart
-app_path= /app
+app_path=/app
 Nodejs
