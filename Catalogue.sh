@@ -1,10 +1,7 @@
 source common.sh
 component=catalogue
-echo $?
-
+Schema=mongo
 Nodejs
 echo $?
 
-dnf install mongodb-mongosh -y
-mongosh --host localhost </app/db/master-data.js
-echo $?
+
