@@ -20,6 +20,25 @@ STAT() {
 
 }
 
+APP_Prequisite() {
+
+PRINT remove old content
+rm -rf ${app_path} &>>LOG_File
+STAT $?
+
+PRINT Create directory
+mkdir ${app_path} &>>LOG_File
+STAT $?
+
+PRINT download app
+curl -o /tmp/{component}.zip https://roboshop-artifacts.s3.amazonaws.com/{component}-v3.zip
+STAT $?
+
+PRINT extract content
+cd ${app_path} &>>LOG_File
+unzip /tmp/{component}.zip
+STAT $?
+}
 
 Nodejs() {
   PRINT Disable Nodejs Default version
@@ -51,25 +70,7 @@ Nodejs() {
   fi
   STAT $?
 
-  PRINT cleaning old content
-  rm -rf /app &>>LOG_File
-  STAT $?
-
-  PRINT create directory
-  mkdir /app &>>LOG_File
-  STAT $?
-
-  PRINT download app file
-  curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}-v3.zip &>>LOG_File
-  STAT $?
-
-  PRINT go to directory
-  cd /app &>>LOG_File
-  echo $?
-
-  PRINT unzip file
-  unzip /tmp/${component}.zip &>>LOG_File
-  STAT $?
+  APP_Prequisite
 
   cd /app &>>LOG_File
 
