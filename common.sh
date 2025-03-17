@@ -43,7 +43,8 @@ PRINT extract content
 cd ${app_path} &>>LOG_File
 unzip /tmp/${component}.zip  &>>$LOG_File
 STAT $?
-}
+
+ }
 
 System_setup() {
   PRINT copy service file
@@ -69,12 +70,6 @@ Nodejs() {
   PRINT install NodeJs
   dnf install nodejs -y
   STAT $?
-
-
-
-
-
-
 
 
   fi
@@ -104,20 +99,15 @@ Java() {
   mv target/shipping-1.0.jar shipping.jar
   STAT $?
 
-  APP_Prequisite
 
+Schema
+System_setup
 
-
-
-
-  mysql -h 172.31.94.140 -uroot -pRoboShop@1 < /app/db/schema.sql
-  mysql -h 172.31.94.140 -uroot -pRoboShop@1 < /app/db/app-user.sql
-  mysql -h 172.31.94.140 -uroot -pRoboShop@1 < /app/db/master-data.sql
 
 }
 
 Schema() {
-  if ['schema' = 'mongo']; then
+  if ["schema" = "mongo"]; then
    PRINT Copy mongodb repo file
     cp mongo.repo /etc/yum.repos.d/mongo.repo &>>LOG_File
     STAT $?
@@ -130,22 +120,22 @@ Schema() {
   mongosh --host localhost </app/db/master-data.js
   STAT $?
 
-  if ['schema' = 'mysql']; then
+  if ["schema" = "mysql"]; then
   PRINT Install mysql client &>>LOG_File
     dnf dnf install mysql -y &>>LOG_File
     STAT $?
 
   PRINT LOAD Schema
-  mysql -h 172.31.94.140 -uroot -pRoboShop@1 < /app/db/schema.sql
+  mysql -h localhost -uroot -pRoboShop@1 < /app/db/schema.sql
   STAT $?
 
   PRINT LOAD mASTER DATA
-  mysql -h 172.31.94.140 -uroot -pRoboShop@1 < /app/db/app-user.sql
+  mysql -h localhost -uroot -pRoboShop@1 < /app/db/app-user.sql
    STAT $?
 
   PRINT Create App users
-  mysql -h 172.31.94.140 -uroot -pRoboShop@1 < /app/db/master-data.sql
+  mysql -h localhost -uroot -pRoboShop@1 < /app/db/master-data.sql
   STAT $?
   fi
 
-
+}
