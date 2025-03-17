@@ -106,7 +106,7 @@ System_setup
 }
 
 Schema() {
-  if ["schema" = "mongo"]; then
+  if ["$schema" == "mongo"]; then
    PRINT Copy mongodb repo file
     cp mongo.repo /etc/yum.repos.d/mongo.repo &>>LOG_File
     STAT $?
@@ -119,6 +119,7 @@ Schema() {
   mongosh --host localhost </app/db/master-data.js
   STAT $?
 
+fi
   if ["schema" = "mysql"]; then
   PRINT Install mysql client &>>LOG_File
     dnf dnf install mysql -y &>>LOG_File
@@ -136,5 +137,5 @@ Schema() {
   mysql -h localhost -uroot -pRoboShop@1 < /app/db/master-data.sql
   STAT $?
 
-
+fi
 }
