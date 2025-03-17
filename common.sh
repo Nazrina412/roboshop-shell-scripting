@@ -36,7 +36,7 @@ STAT $?
 
 PRINT extract content
 cd ${app_path} &>>LOG_File
-unzip /tmp/${component}.zip &>>LOG_File
+unzip /tmp/${component}.zip  &>>$LOG_File
 STAT $?
 }
 
