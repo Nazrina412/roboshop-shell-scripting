@@ -22,12 +22,14 @@ STAT() {
 }
 
 APP_Prequisite() {
-PRINT add user
+ PRINT add user
   id roboshop &>>LOG_File
   if [ $? -ne 0 ]; then
      useradd roboshop &>>LOG_File
+   fi
+STAT $?
 
-PRINT remove old content
+ PRINT remove old content
 rm -rf ${app_path} &>>LOG_File
 STAT $?
 
@@ -43,8 +45,7 @@ PRINT extract content
 cd ${app_path} &>>LOG_File
 unzip /tmp/${component}.zip  &>>$LOG_File
 STAT $?
-
- }
+}
 
 System_setup() {
   PRINT copy service file
@@ -58,7 +59,8 @@ System_setup() {
    STAT $?
 
 }
-Nodejs() {
+
+ Nodejs() {
   PRINT Disable Nodejs Default version
   dnf module disable nodejs -y &>>LOG_File
   STAT $?
@@ -71,9 +73,6 @@ Nodejs() {
   dnf install nodejs -y
   STAT $?
 
-
-  fi
-  STAT $?
 
   APP_Prequisite
 
