@@ -29,7 +29,7 @@ APP_Prequisite() {
    fi
 STAT $?
 
- PRINT remove old content
+PRINT remove old content
 rm -rf ${app_path} &>>LOG_File
 STAT $?
 
@@ -74,7 +74,7 @@ System_setup() {
   STAT $?
 
 
-  APP_Prequisite
+APP_Prequisite
 
 
 
