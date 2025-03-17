@@ -15,7 +15,8 @@ STAT() {
           echo -e "\e[31mFAILURE\e[0m"
           echo "Refer the log file for more information"
 
-          exit $1           fi
+          exit $1
+           fi
 
 }
 
